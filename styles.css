@@ -1,0 +1,288 @@
+/* --- COLOR PALETTE --- */
+:root {
+    --color-primary: #3b5998; /* Deep Blue/Navy for main background/text */
+    --color-accent: #00bcd4; /* Vibrant Teal/Cyan for headers and highlights */
+    --color-background-dark: #12121e; /* Near-Black/Deep Navy */
+    --color-surface-dark: #1e1e2d; /* Slightly lighter surface for cards */
+    --color-text-light: #f4f4f4;
+    --color-text-muted: #aaaaaa;
+    --color-shadow-glow: rgba(0, 188, 212, 0.4); /* Teal glow */
+}
+
+/* General Styling */
+body {
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* --- DYNAMIC TECH BACKGROUND --- */
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    /* Subtle background pattern (optional, can be complex) */
+    background-image: radial-gradient(circle at 10% 20%, rgba(51, 51, 80, 0.5) 0%, transparent 80%),
+                      radial-gradient(circle at 90% 80%, rgba(51, 51, 80, 0.5) 0%, transparent 80%);
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+
+/* Header/Hero Section */
+.hero {
+    /* Use dynamic solid color accents */
+    background: linear-gradient(135deg, var(--color-accent), #4CAF50); /* Teal/Green dynamic gradient */
+    color: var(--color-background-dark); /* Dark text on bright banner */
+    padding: 80px 0;
+    text-align: center;
+    box-shadow: 0 4px 15px var(--color-shadow-glow);
+}
+
+.hero h1 {
+    font-family: 'Merriweather', serif; 
+    font-size: 3.2em;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+/* Main Content Layout */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Section Blocks (Dark Surface Cards) */
+.section-block {
+    background: var(--color-surface-dark);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    /* Subtle border and glow */
+    border-left: 3px solid var(--color-accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
+    transition: box-shadow 0.3s ease;
+}
+
+.section-block:hover {
+    box-shadow: 0 5px 20px var(--color-shadow-glow); /* Enhanced glow on hover */
+}
+
+.section-block h2 {
+    color: var(--color-accent); 
+    border-bottom: 3px solid var(--color-accent); 
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Profile Card Styling */
+.profile-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: var(--color-surface-dark);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    border-left: 3px solid var(--color-accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.profile-info {
+    flex: 2;
+    padding-right: 30px;
+}
+.profile-info p {
+    color: var(--color-text-light); /* Ensure body text is white/light gray */
+}
+
+.contact-details {
+    flex: 1;
+    border-left: 1px solid #33334f; /* Darker divider */
+    padding-left: 30px;
+}
+
+.contact-details p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: var(--color-text-muted);
+}
+
+.name-highlight {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 15px !important;
+}
+
+/* Links and Hover Transitions (Glow) */
+a {
+    transition: color 0.3s ease, text-shadow 0.3s ease; 
+    color: var(--color-accent) !important;
+    text-decoration: none;
+}
+
+.contact-details a:hover,
+.pub-link a:hover {
+    color: var(--color-text-light) !important;
+    text-shadow: 0 0 8px var(--color-shadow-glow); /* Dynamic glow effect */
+}
+
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.skills-grid h3 {
+    color: var(--color-accent);
+    border-bottom: 1px solid #33334f;
+    padding-bottom: 5px;
+    font-weight: 600;
+}
+.skills-grid p {
+    color: var(--color-text-light);
+}
+
+/* Research Interests Styling (Tags) */
+.research-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+}
+
+.research-list li {
+    background-color: #2a2a3e; /* Darker background for tags */
+    color: var(--color-text-light); 
+    border: 1px solid var(--color-accent); /* Border with accent color */
+    padding: 5px 10px;
+    border-radius: 4px; 
+    font-size: 0.9em;
+    font-weight: 400;
+    margin-bottom: 5px; 
+    flex-shrink: 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.research-list li:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background-dark);
+    box-shadow: 0 0 10px var(--color-shadow-glow);
+}
+
+
+/* Project Styling and Hover Lift Animation */
+.project-item {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #33334f;
+    border-radius: 4px;
+    background: #1a1a2e; /* Slightly different surface for project items */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.project-item:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 20px var(--color-shadow-glow); /* Stronger glow on hover */
+}
+
+.project-item h3 {
+    color: var(--color-text-light);
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.project-meta {
+    font-size: 0.9em;
+    color: var(--color-text-muted);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.project-item ul {
+    padding-left: 20px;
+    list-style-type: square;
+    color: var(--color-text-light);
+}
+
+.project-item li {
+    margin-bottom: 5px;
+    font-size: 0.95em;
+    color: var(--color-text-light);
+}
+
+.tech-stack {
+    font-weight: 700;
+    color: #4CAF50; /* A contrasting green for tech stacks */
+    margin-top: 10px;
+    list-style: none; 
+}
+
+/* Education & Academic Achievements Layout - VERTICAL STACKED */
+.education h3,
+.certifications-list h3,
+.publications-list h3 {
+    color: var(--color-accent);
+    border-bottom: 1px solid #33334f;
+}
+
+.edu-item h4 {
+    color: var(--color-text-light);
+}
+
+.edu-item p {
+    color: var(--color-text-muted);
+}
+
+.coursework {
+    font-size: 0.8em;
+    color: var(--color-text-muted) !important;
+}
+
+/* PUBLICATION & CERTIFICATION LIST STYLES */
+.publications-list h4 {
+    color: var(--color-accent);
+    font-size: 1.05em;
+    font-weight: 600;
+}
+
+.conference-date {
+    font-size: 0.85em;
+    color: var(--color-text-muted);
+}
+
+.task-tag {
+    font-weight: 500; 
+    color: var(--color-background-dark);
+    background-color: var(--color-accent); /* Bright background for tags */
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.9em; 
+    display: inline-block; 
+    margin-left: 10px;
+}
