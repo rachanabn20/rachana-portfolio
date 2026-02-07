@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rachana B N | Complete Academic Portfolio</title>
+    <style>
+        :root {
+            --bg: #030303;
+            --card-bg: rgba(15, 15, 25, 0.98);
+            --accent-cyan: #00f2ff;
+            --accent-purple: #7d00ff;
+            --accent-pink: #ff007a;
+            --accent-lime: #39ff14;
+            --text-main: #ffffff;
+            --text-dim: #b0b0c0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bg); 
+            color: var(--text-main); 
+            font-family: 'Inter', 'Segoe UI', sans-serif; 
+            overflow: hidden; 
+            height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed; top: 0; left: 0; height: 100%; width: 380px;
+            background: linear-gradient(180deg, #0a0a1a 0%, #000 100%);
+            border-right: 1px solid var(--accent-purple);
+            padding: 40px; z-index: 1000; overflow-y: auto;
+        }
+
+        .name-header { font-size: 2.4rem; font-weight: 900; color: var(--accent-cyan); letter-spacing: -1.5px; margin-bottom: 5px; }
+        .role-tag { font-size: 0.8rem; color: var(--accent-lime); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; display: block; }
+
+        .dl-resume {
+            display: block; width: 100%; padding: 16px; margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+            color: white; text-align: center; text-decoration: none; font-weight: 800;
+            border-radius: 10px; font-size: 0.85rem; transition: 0.4s;
+        }
+        .dl-resume:hover { box-shadow: 0 0 25px rgba(125, 0, 255, 0.6); transform: scale(1.02); }
+
+        .contact-group { margin-bottom: 35px; }
+        .contact-group a { color: var(--text-dim); text-decoration: none; display: block; margin-bottom: 12px; font-size: 0.9rem; transition: 0.3s; }
+        .contact-group a:hover { color: var(--accent-cyan); }
+
+        .skill-box { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .pill { padding: 5px 12px; background: rgba(0, 242, 255, 0.1); color: var(--accent-cyan); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 20px; font-size: 0.75rem; }
+
+        /* 3D Viewport */
+        #viewport { perspective: 2000px; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
+        #stage { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 1s cubic-bezier(0.1, 0.9, 0.2, 1); }
+
+        .panel {
+            position: absolute; width: 950px; max-width: 58vw;
+            left: 55%; top: 50%; transform: translate(-50%, -50%);
+            background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 55px; border-radius: 40px; box-shadow: 0 40px 120px rgba(0,0,0,0.9);
+            backface-visibility: hidden;
+        }
+
+        /* Depth Layers */
+        .layer-1 { transform: translate3d(-50%, -50%, 0px); }
+        .layer-2 { transform: translate3d(-50%, -50%, -5000px); }
+        .layer-3 { transform: translate3d(-50%, -50%, -10000px); }
+        .layer-4 { transform: translate3d(-50%, -50%, -15000px); }
+        .layer-5 { transform: translate3d(-50%, -50%, -20000px); }
+
+        h2 { font-size: 2.2rem; color: var(--accent-cyan); margin-bottom: 30px; text-transform: uppercase; border-left: 10px solid var(--accent-pink); padding-left: 20px; }
+        .scroll-container { max-height: 520px; overflow-y: auto; padding-right: 20px; }
+        
+        .card { background: rgba(255,255,255,0.04); padding: 25px; border-radius: 20px; margin-bottom: 25px; border: 1px solid rgba(125, 0, 255, 0.2); }
+        .card h4 { color: var(--accent-pink); margin-bottom: 10px; font-size: 1.2rem; }
+        .card p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.7; }
+
+        .edu-item { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .edu-year { color: var(--accent-cyan); font-weight: bold; font-family: monospace; }
+
+        .pub-row { margin-bottom: 20px; padding: 15px; border-radius: 10px; background: rgba(57, 255, 20, 0.03); border-left: 3px solid var(--accent-lime); }
+        .pub-venue { color: var(--accent-lime); font-weight: bold; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px; display: block; }
+
+        .repo-btn { display: inline-block; margin-top: 15px; color: var(--accent-cyan); text-decoration: none; font-weight: bold; font-size: 0.8rem; border: 1px solid var(--accent-cyan); padding: 6px 15px; border-radius: 5px; transition: 0.3s; }
+        .repo-btn:hover { background: var(--accent-cyan); color: #000; }
+
+        .hint { position: fixed; bottom: 30px; right: 50px; color: var(--accent-cyan); font-size: 0.8rem; letter-spacing: 6px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="name-header">RACHANA B N</div>
+        <span class="role-tag">Machine Learning Researcher</span>
+        
+        <a href="Rachana_BN_Resume.pdf" download class="dl-resume">DOWNLOAD MASTER RESUME</a>
+
+        <div class="contact-group">
+            <a href="mailto:rachananagaraju920@gmail.com">📧 rachananagaraju920@gmail.com</a>
+            <a href="tel:+919164955681">📞 +91 9164955681</a>
+            <a href="https://linkedin.com/in/rachana-nagaraju-9b3385369">🔗 LinkedIn Profile</a>
+            <a href="https://github.com/rachanabn20">📂 GitHub Repositories</a>
+            <a href="https://scholar.google.com/citations?user=qIwyQWsAAAAJ">🎓 Google Scholar</a>
+        </div>
+
+        <h4 style="font-size: 0.75rem; color: var(--accent-purple); margin-bottom: 10px;">CORE STACK</h4>
+        <div class="skill-box">
+            <span class="pill">Python</span> <span class="pill">PyTorch</span> <span class="pill">HPC-AI</span> 
+            <span class="pill">NLP</span> <span class="pill">CV</span> <span class="pill">Transformers</span>
+            <span class="pill">SQL</span> <span class="pill">Scikit-Learn</span> <span class="pill">Git</span>
+        </div>
+
+        <h4 style="font-size: 0.75rem; color: var(--accent-purple); margin-top: 30px; margin-bottom: 10px;">LANGUAGES</h4>
+        <p style="font-size: 0.85rem; color: var(--text-dim);">Kannada (Native), English, Hindi</p>
+    </div>
+
+    <div id="viewport">
+        <div id="stage">
+
+            <div class="panel layer-1">
+                <h2>Professional Summary</h2>
+                <div style="font-size: 1.15rem; line-height: 1.9; color: var(--text-dim);">
+                    <p>Dedicated Researcher and AI Developer specializing in bridging the gap between low-resource languages and modern Transformer architectures. Expert in building syllable-aware language models (KasturiBERT) and high-performance computer vision pipelines for real-time anomaly detection.</p>
+                    <br>
+                    <p>Actively engaged in international research communities (RANLP, IberLEF), with a track record of implementing scalable solutions in Pharmaceutical AI and High-Performance Computing (HPC).</p>
+                </div>
+            </div>
+
+            <div class="panel layer-2">
+                <h2>Education & Certifications</h2>
+                <div class="scroll-container">
+                    <div class="card" style="border-left: 5px solid var(--accent-cyan);">
+                        <h4>Professional Certifications</h4>
+                        <p>• C-DAC High Performance Computing (HPC) AI Certification (Aug 2025 - Dec 2025)</p>
+                        <p>• Specialized Certification in Large Language Models (LLMs)</p>
+                    </div>
+                    
+                    <div class="edu-item">
+                        <div><strong>Master of Computer Applications (MCA)</strong><br><small>Mangalore University</small></div>
+                        <div class="edu-year">78.68% (8.22 GPA) | 2026</div>
+                    </div>
+                    <div class="edu-item">
+                        <div><strong>Bachelor of Science (Computer Science)</strong><br><small>University of Mysore</small></div>
+                        <div class="edu-year">76.87% | 2023</div>
+                    </div>
+                    <div class="edu-item">
+                        <div><strong>XII (PCMC)</strong><br><small>Morarji Desai Residential PU College</small></div>
+                        <div class="edu-year">79.16% | 2020</div>
+                    </div>
+                    <div class="edu-item">
+                        <div><strong>X (SSLC)</strong><br><small>Morarji Desai Residential School</small></div>
+                        <div class="edu-year">80.48% | 2018</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel layer-3">
+                <h2>Research Publications</h2>
+                <div class="scroll-container">
+                    <div class="pub-row">
+                        <span class="pub-venue">IberLEF 2025</span>
+                        <strong>Handcrafted Features Fusion with Multilingual Models for Hope Speech Detection in Spanish and English.</strong>
+                    </div>
+                    <div class="pub-row">
+                        <span class="pub-venue">RANLP 2025</span>
+                        <strong>Experiments with Multilingual Models for Hope Speech Detection.</strong>
+                    </div>
+                    <div class="pub-row">
+                        <span class="pub-venue">WILD Shared Task</span>
+                        <strong>Word-Level Language Identification in Dravidian Languages.</strong>
+                    </div>
+                    <div class="pub-row">
+                        <span class="pub-venue">DravidianLangTech</span>
+                        <strong>Offensive Language Identification for Dravidian Code-Mixed Text.</strong>
+                    </div>
+                    <div class="pub-row">
+                        <span class="pub-venue">HASOC 2024</span>
+                        <strong>Multimodal Hate Speech Detection in Memes (Towards Safer Social Media).</strong>
+                    </div>
+                    <div class="pub-row">
+                        <span class="pub-venue">SciHigh Task</span>
+                        <strong>Leveraging Transformers for Structured Highlight Generation in Scientific Literature.</strong>
+                    </div>
+                    <div class="pub-row">
+                        <span class="pub-venue">VATIKA Task</span>
+                        <strong>Transformer-Based Approaches for Hindi Question Answering.</strong>
+                    </div>
+                    <div class="pub-row">
+                        <span class="pub-venue">CMIR Shared Task</span>
+                        <strong>Model Fusion for Bridging Linguistic Variability in Bengali-English Retrieval.</strong>
+                    </div>
+                    <div class="pub-row">
+                        <span class="pub-venue">PROMID Shared Task</span>
+                        <strong>Labeling Misinformation Types in South Indian Language Summaries.</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel layer-4">
+                <h2>Technical Projects</h2>
+                <div class="scroll-container">
+                    <div class="card">
+                        <h4>KasturiBERT (NLP)</h4>
+                        <p>Developed the first syllable-aware Kannada BERT model. Features a custom WordPiece tokenizer that preserves native linguistic structures, significantly outperforming standard multilingual models.</p>
+                        <a href="https://github.com/rachanabn20/KasturiBERT-Tokenizer" class="repo-btn">GITHUB REPO</a>
+                    </div>
+                    <div class="card">
+                        <h4>Real-Time Video Analysis (CV/HPC)</h4>
+                        <p>Built a high-throughput anomaly detection system for surveillance using PyTorch and HPC infrastructure. Optimized for real-time processing of multiple video streams.</p>
+                        <a href="https://github.com/rachanabn20/Real-Time-Video-Analysis-Using-AI" class="repo-btn">GITHUB REPO</a>
+                    </div>
+                    <div class="card">
+                        <h4>Intelligent Pharma Context Engine</h4>
+                        <p>Created an automated pipeline for medication data extraction. Combines YOLO-based drug detection with fuzzy string matching against RxNorm databases for authenticity verification.</p>
+                        <a href="https://github.com/rachanabn20/The-Intelligent-Pharma-Context-Engine" class="repo-btn">GITHUB REPO</a>
+                    </div>
+                    <div class="card">
+                        <h4>Multilingual Hope Speech (RANLP)</h4>
+                        <p>A binary classification system for English/Spanish social media data using Transformer ensembles and soft-voting mechanisms.</p>
+                        <a href="https://github.com/rachanabn20/MUCS-RANLP2025" class="repo-btn">GITHUB REPO</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel layer-5">
+                <h2>Research Interests & Goals</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <div class="card">
+                        <h4>Scientific Interests</h4>
+                        <p>• Machine Translation<br>• Code-Mixed Linguistics<br>• Sequence Labelling<br>• Sentiment Analysis<br>• Scientific Summarization</p>
+                    </div>
+                    <div class="card">
+                        <h4>Professional Goals</h4>
+                        <p>• Advancing Low-Resource NLP<br>• Deploying Scalable AI<br>• Multi-modal Research<br>• Knowledge Graph Integration</p>
+                    </div>
+                </div>
+                <p style="margin-top: 40px; text-align: center; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; font-style: italic; font-size: 0.8rem;">
+                    "I hereby declare that the information provided is true to the best of my knowledge."
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="hint">SCROLL TO NAVIGATE RESEARCH</div>
+
+    <script>
+        const stage = document.getElementById('stage');
+        let z = 0;
+        window.addEventListener('wheel', (e) => {
+            z -= e.deltaY * 5;
+            z = Math.min(Math.max(z, 0), 20000);
+            stage.style.transform = `translateZ(${z}px)`;
+        });
+        window.addEventListener('mousemove', (e) => {
+            const rx = (window.innerHeight / 2 - e.pageY) / 100;
+            const ry = (window.innerWidth / 2 - e.pageX) / 100;
+            stage.style.rotate = `${rx}deg ${-ry}deg 0deg`;
+        });
+    </script>
+</body>
+</html>
